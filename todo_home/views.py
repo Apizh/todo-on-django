@@ -1,11 +1,13 @@
-from django.contrib.auth import authenticate, login as loginUser
+from django.contrib.auth import authenticate, login as loginUser, logout, login
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from django.http import HttpRequest, HttpResponse
 from django.shortcuts import render, redirect
 from todo_home.forms import TodoUserForm
 from todo_home.models import TodoUser
+from django.contrib.auth.decorators import login_required
 
 
+@login_required(login_url='todo_home:login')
 def home(request: HttpRequest) -> HttpResponse:
     if request.user.is_authenticated:
         user = request.user
@@ -53,6 +55,7 @@ def signup(request: HttpRequest) -> HttpResponse:
             return render(request, 'todo_home/signup.html', context=context)
 
 
+@login_required(login_url='todo_home:login')
 def add_todo(request: HttpRequest) -> HttpResponse:
     if request.user.is_authenticated:
         user = request.user
@@ -66,3 +69,8 @@ def add_todo(request: HttpRequest) -> HttpResponse:
             return redirect('todo_home:home_page')
         else:
             return render('todo_home/index.html', {'form': form})
+
+
+def signout(request: HttpRequest) -> HttpResponse:
+    logout(request)
+    return redirect('todo_home:login')

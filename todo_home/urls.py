@@ -1,6 +1,6 @@
 from django.urls import path
 
-from todo_home.views import home, login, signup, add_todo
+from todo_home.views import home, login, signup, add_todo, signout
 
 app_name = 'todo_home'
 
@@ -9,4 +9,5 @@ urlpatterns = [
     path('login/', login, name='login'),
     path('signup/', signup, name='signup'),
     path('add_todo/', add_todo, name='add_todo'),
+    path('logout/', signout, name='signout'),
 ]
