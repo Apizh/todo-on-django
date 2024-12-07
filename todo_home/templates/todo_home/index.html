@@ -1,6 +1,47 @@
 {% extends 'todo_home/base.html' %}
 {% block content %}
-<div>
-    <h1>Home page</h1>
+<div class="container pt-4">
+    <div class="row p-0 mt-4">
+        <div class="col-lg-4 mx-auto shadow p-0">
+            <div class="alert alert-info">
+                <h3>Добавить новую задачу</h3>
+            </div>
+            <div class="p-4">
+                <form action="/add_todo/" method="POST">
+                    {% csrf_token %}
+                    {{ form.as_p }}
+                    <hr>
+                    <input type="submit" value="ADD" class="btn btn-info">
+                </form>
+            </div>
+        </div>
+        <div class="col">
+            <div class="border">
+                <div>
+                    <table class="table">
+                        <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>Title</th>
+                            <th>Status</th>
+                            <th>Priority</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {% for todo in todos %}
+                        <tr>
+                            <td>{{ forloop.counter }}</td>
+                            <td>{{ todo.title }}</td>
+                            <td>{{ todo.status }}</td>
+                            <td>{{ todo.priority }}</td>
+                        </tr>
+                        {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
+
 {% endblock %}

@@ -2,7 +2,7 @@ from django.contrib.auth.models import User
 from django.db import models
 
 
-class User(models.Model):
+class TodoUser(models.Model):
     status_choices = [
         ('C', 'COMPLETE'),
         ('P', 'PENDING'),
