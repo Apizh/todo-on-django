@@ -74,3 +74,8 @@ def add_todo(request: HttpRequest) -> HttpResponse:
 def signout(request: HttpRequest) -> HttpResponse:
     logout(request)
     return redirect('todo_home:login')
+
+
+def delete_todo(request: HttpRequest, id: int) -> HttpResponse:
+    TodoUser.objects.get(pk=id).delete()
+    return redirect('todo_home:home_page')
