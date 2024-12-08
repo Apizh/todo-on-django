@@ -1,9 +1,14 @@
 {% extends 'todo_home/base.html' %}
+
+{% block title %}
+Sign In
+{% endblock %}
+
 {% block content %}
 <div class="container pt-4">
-    <div class="col-lg-4 mx-auto p-0 mt-4">
-        <div class="alert alert-info">
-            <h3>Log in to your account</h3>
+    <div class="col-lg-4 mx-auto p-0 mt-4 shadow">
+        <div class="navbar navbar-dark bg-dark text-light">
+            <h5>Log in to your account</h5>
         </div>
         <div class="p-4">
             <form action="/login/" method="POST">

@@ -1,6 +1,6 @@
 from django.urls import path
 
-from todo_home.views import home, login, signup, add_todo, signout, delete_todo
+from views import home, login, signup, add_todo, signout, delete_todo
 
 app_name = 'todo_home'
 

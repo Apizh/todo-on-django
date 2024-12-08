@@ -1,16 +1,23 @@
 {% extends 'todo_home/base.html' %}
+
+{% block title %}
+Create Account
+{% endblock %}
+
 {% block content %}
 <div class="container pt-4">
     <div class="col-lg-5 shadow p-0 mx-auto">
-    <div class="alert alert-success">Account create</div>
-    <div class="p-4">
-        <form method="post" action="/signup/">
-            {% csrf_token %}
-            {{ form.as_p }}
-            <hr>
-            <input class="btn btn-success" type="submit" value="Create account">
-        </form>
+        <div class="navbar navbar-dark bg-dark text-light">
+            <h5>Account create</h5>
+        </div>
+        <div class="p-4">
+            <form method="post" action="/signup/">
+                {% csrf_token %}
+                {{ form.as_p }}
+                <hr>
+                <input class="btn btn-success" type="submit" value="Create account">
+            </form>
+        </div>
     </div>
-</div>
 </div>
 {% endblock %}
