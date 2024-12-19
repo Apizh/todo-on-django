@@ -7,6 +7,11 @@ from todo_home.forms import TodoUserForm
 from todo_home.models import TodoUser
 
 
+def page_not_found(request: HttpRequest, exception):
+    """Страница, вызываемая при обращении к несуществующей странице."""
+    return render(request, 'todo_home/Not_found_404.html')
+
+
 @login_required(login_url='todo_home:login')
 def home(request: HttpRequest) -> HttpResponse:
     """Главная страница с задачами текущего пользователя."""
